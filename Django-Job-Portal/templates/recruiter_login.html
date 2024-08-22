@@ -1,0 +1,40 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'navigation.html' %}
+
+<h1 class="name text-center"><i><b>Recruiter-login</b></i></h1>
+<form class="container mt-5" action="" method="POST">
+    {% csrf_token %}
+    <label class="label1" for=""><b>Username (email address)</b></label>
+    <input type="text" class="form-control" name="uname" placeholder="Enter email address">
+
+    <label class="label1" for=""><b>Password</b></label>
+    <input type="password" class="form-control" name="pwd" placeholder="Enter Password">
+
+    <input type="submit" class="btn btn-primary" style="margin-top: 20px;" value="Login">
+    <a href="{% url 'recruiter_signup' %}" class="btn btn-primary" style="margin-top: 20px;">Sign-up</a>
+
+</form>
+
+
+{% if fm == "no" %}
+<script>
+    alert("Recruiter Login Successful");
+    window.location=("{% url 'user_home' %}")
+</script>
+{% endif %}
+{% if fm == "yes" %}
+<script>
+    alert("Invalid login!!..");
+</script>
+{% endif %}
+<!--{% if fm == "not" %}
+<script>
+    alert("Your login  status is pending!!..");
+</script>
+{% endif %}-->
+
+
+{% endblock %}

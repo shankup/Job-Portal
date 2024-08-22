@@ -1,0 +1,86 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'recruiter_navigation.html' %}
+<h1><marquee><i><b>Add job details</b></i></h1></marquee></h1>
+
+<form class="container mt-5" name="signup" onsubmit="return checkpass();" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="row">
+        <div class="from-group col-md-12">
+            <b><label for="">Job Title</label></b>
+            <input type="text" class="form-control" name="jobtitle" placeholder="Enter your job title" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="from-group col-md-6">
+            <b><label for="">Start Date</label></b>
+            <input type="date" class="form-control" name="startdate"  required>
+        </div>
+        <div class="from-group col-md-6">
+            <b><label for="">End Date</label></b>
+            <input type="date" class="form-control" name="enddate"  required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="from-group col-md-6">
+            <b><label for="">Location</label></b>
+            <input type="text" class="form-control" name="location" placeholder="Enter location" required>
+        </div>
+        <div class="from-group col-md-6">
+            <b><label for="">Experience (In years) </label></b>
+            <input type="text" class="form-control" name="experience" placeholder="Enter experience" required>
+        </div>
+    </div>
+    <div class="row">
+        <div class="from-group col-md-6">
+            <b><label for="">Salary (per month) </label></b>
+            <input type="text" class="form-control" name="salary" placeholder="Enter Salary">
+        </div>
+        <div class="from-group col-md-6">
+            <b><label for="">company logo</label></b>
+            <input type="file" class="form-control" name="logo">
+        </div>
+    </div>
+    <div class="row">
+        <div class="from-group col-md-12">
+            <b><label for="">Skills</label></b>
+            <input type="text" class="form-control" name="skills" placeholder="Enter Skills">
+        </div>
+        <div class="from-group col-md-12"> 
+            <b><label for="">Description</label></b>
+            <input type="text" class="form-control" name="description" placeholder="Enter Description">
+        </div>
+    </div>
+    <input type="submit" value="Submit" class="btn btn-primary" style="margin-top: 15px;">
+
+</form>
+
+<script>
+    // JavaScript function to check if passwords match
+    function checkpass() {
+        var pwd = document.getElementById('pwd').value;
+        var cpwd = document.getElementById('cpwd').value;
+        if (pwd !== cpwd) {
+            alert('Password and Confirm Password do not match');
+            return false; // Prevent form submission
+        }
+        return true; // Allow form submission
+    }
+</script>
+
+{% if fm == "no" %}
+<script>
+    alert("Job detail has been added");
+    window.location=("{% url 'job_list' %}")
+</script>
+{% endif %}
+{% if fm == "yes" %}
+<script>
+    alert("Somthing went Wrong!!..");
+</script>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% load static %}
+
+{% block body %}
+
+{% include 'user_navigation.html' %}
+
+<h1 style="margin-left: 40%;margin-top: 2%;">User Profile</h1>
+<div style="margin-top: 4%;margin-left: 30%;" class="container">
+   
+    
+    <div class="row">
+        <div class="col-md-4">
+            <h5>Username / Email:</h5>
+        </div>
+        <div class="col-md-8">
+            <p>{{ user_profile.user.username }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h5>First Name:</h5>
+        </div>
+        <div class="col-md-8">
+            <p>{{ user_profile.user.first_name }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h5>Last Name:</h5>
+        </div>
+        <div class="col-md-8">
+            <p>{{ user_profile.user.last_name }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h5>Mobile:</h5>
+        </div>
+        <div class="col-md-8">
+            <p>{{ user_profile.mobile }}</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <h5>Gender:</h5>
+        </div>
+        <div class="col-md-8">
+            <p>{{ user_profile.gender }}</p>
+        </div>
+
+    </div>
+    <input type="submit" href="{% url 'user_signup' %}" value="Edit">
+</div>
+
+
+{% endblock %}
